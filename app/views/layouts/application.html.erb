@@ -1,14 +1,50 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Intune2</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Intune2</title>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div id="sidebar">
+      <div id="logo">
+        <%= link_to root_path do %>
+          <%= image_tag "Kevin" %>
+        <% end %>
+      </div>
 
-<%= yield %>
+      <ul>
+        <li class="category"></li>
+        <li><%= link_to "Blog", root_path %></li>
+        <li><%= link_to "Demo", root_path %></li>
+        <li>How it Works</li>
+        <li>Testimonials</li>
+      </ul>
 
-</body>
+      <ul>
+       <li class="category">Social Media</li>
+       <li><a href="twitter">Twitter</a></li>
+       <li><a href="Instagram">Instagram</a></li>
+       <li><a href="Facebook">Facebook</a></li>
+       <li><a href="Email">Email</a></li>
+      </ul>
+
+      <p class="sign_in">Sign Up</p>
+    </div>
+    <div id="main_content">
+      <div id="header">
+        <p>All Posts</p>
+      <div class="buttons">
+        <button class="button"><%= link_to "New Blog", new_post_path %></button>
+        <button class="button">Log Out</button>
+      </div>
+      <% flash.each do |name, msg| %>
+        <%= content_tag(:div, msg, class: "alert") %>
+      <%end%>
+
+
+    <%= yield %>
+
+  </body>
 </html>
